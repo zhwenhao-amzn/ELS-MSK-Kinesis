@@ -35,19 +35,19 @@ rm $TEMP_FILE
 
 ```
 
-### 3. Create topic `caculate-size` with 18 partitions and 3 replication-factor
+#### 3. Create topic `caculate-size` with 18 partitions and 3 replication-factor
 
 ```bash
 ./kafka-topics.sh --create --bootstrap-server b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 --topic caculate-size --partitions 18 --replication-factor 3`
 ```
 
-### 4. Push messages to MSK cluster 
+#### 4. Push messages to MSK cluster 
 
 ```bash
 ./kafka-run-class.sh org.apache.kafka.tools.ProducerPerformance --print-metrics --topic caculate-size --num-records 10000000 --throughput 8000000 --record-size 1024 --producer-props bootstrap.servers=b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 buffer.memory=67108864 batch.size=32768  acks=1
 ```
 
-### 5. Run kafka_topics_sizes.sh to calcute size of topic `caculate-size`
+#### 5. Run kafka_topics_sizes.sh to calcute size of topic `caculate-size`
 
 ```bash
 ./kafka_topics_sizes.sh
