@@ -1,6 +1,6 @@
 ## Prerequisites
 
-### 1.Set up custom configuration of MSK cluster as below
+#### 1.Set up custom configuration of MSK cluster as below
 
     auto.create.topics.enable=true
     default.replication.factor=3
@@ -13,7 +13,7 @@
     unclean.leader.election.enable=true
     log.retention.bytes=1073741824
 
-### 2.Copy below scripts and save it as kafka_topics_sizes.sh into the kafka_2.12-2.4.1/bin folder.
+#### 2.Copy below scripts and save it as kafka_topics_sizes.sh into the kafka_2.12-2.4.1/bin folder.
 
 ```bash
 
@@ -37,19 +37,25 @@ rm $TEMP_FILE
 
 ### 3. Create topic `caculate-size` with 18 partitions and 3 replication-factor
 
-`./kafka-topics.sh --create --bootstrap-server b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 --topic caculate-size --partitions 18 --replication-factor 3`
+```bash
+./kafka-topics.sh --create --bootstrap-server b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 --topic caculate-size --partitions 18 --replication-factor 3`
+```
 
 ### 4. Push messages to MSK cluster 
 
-`./kafka-run-class.sh org.apache.kafka.tools.ProducerPerformance --print-metrics --topic caculate-size --num-records 10000000 --throughput 8000000 --record-size 1024 --producer-props bootstrap.servers=b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 buffer.memory=67108864 batch.size=32768  acks=1 `
+```bash
+./kafka-run-class.sh org.apache.kafka.tools.ProducerPerformance --print-metrics --topic caculate-size --num-records 10000000 --throughput 8000000 --record-size 1024 --producer-props bootstrap.servers=b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 buffer.memory=67108864 batch.size=32768  acks=1
+```
 
 ### 5. Run kafka_topics_sizes.sh to calcute size of topic `caculate-size`
 
-`./kafka_topics_sizes.sh`
+```bash
+./kafka_topics_sizes.sh
+```
 
 ## Questions
 
-## 1. print the result of kafka_topics_sizes.sh
-## 2. I have configured log.retention.bytes as 1 GB, why log cleanup policy of MSK doesn't take affect?
+#### 1. print the result of kafka_topics_sizes.sh
+#### 2. I have configured log.retention.bytes as 1 GB, why log cleanup policy of MSK doesn't take affect?
 
 Tips: check log.retention.bytes definitions.
