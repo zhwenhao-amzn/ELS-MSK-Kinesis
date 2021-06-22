@@ -39,7 +39,7 @@ for i in range(10000000):
     print(str)
 
 ```
-#### 3.Running code for 3 minutes and stop it, then wait about abount 5 minutes and use console-consummer to consume data from beginning.
+#### 3.Running code for 3 minutes and stop it, then wait about 5 minutes and use console-consummer to consume data from beginning.
 
 ```bash
 ./kafka-console-consumer.sh --bootstrap-server b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 --topic els-test --from-beginning
@@ -48,7 +48,7 @@ for i in range(10000000):
 ## Questions
 
 #### 1. What's your observation from console-conumer result?
-#### 2. Describe the possible reason for your observation.
+#### 2. Describe the possible reasons for your observation.
 #### 3. How to mitigate the issue from your observation?
 
 Tip: Check the relationship between message arrvial timestamp and log.retention.hours
