@@ -14,6 +14,7 @@
     log.retention.bytes=1073741824
 
 #### 2.Copy below scripts and save it as kafka_topics_sizes.sh into the kafka_2.12-2.4.1/bin folder.
+##### Just remind that replace MSK broker string to yours.
 
 ```bash
 
