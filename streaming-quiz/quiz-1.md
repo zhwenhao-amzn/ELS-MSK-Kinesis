@@ -39,7 +39,7 @@ rm $TEMP_FILE
 #### 3. Create topic `caculate-size` with 18 partitions and 3 replication-factor
 
 ```bash
-./kafka-topics.sh --create --bootstrap-server b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 --topic caculate-size --partitions 18 --replication-factor 3`
+./kafka-topics.sh --create --bootstrap-server b-1.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-2.mskname.xxxxx.kafka.region.amazonaws.com:9092,b-3.mskname.xxxxx.kafka.region.amazonaws.com:9092 --topic caculate-size --partitions 18 --replication-factor 3
 ```
 
 #### 4. Push messages to MSK cluster 
