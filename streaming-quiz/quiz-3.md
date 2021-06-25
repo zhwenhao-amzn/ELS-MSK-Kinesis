@@ -39,7 +39,7 @@ producer = KafkaProducer(bootstrap_servers='b-1.mskname.xxxxx.kafka.region.amazo
 for i in range(10000000):
     key=random.randint(0,99)
     value=random.randint(0,99)
-    future=producer.send('els-test-3',{key:value},timestamp_ms=0)
+    future=producer.send('els-test-3',{key:value})
     record_metadata = future.get(timeout=10)
     str = 'key:{0},value:{1},topic:{2},partition:{3},offset:{4}'.format(key,value,record_metadata.topic,record_metadata.partition,record_metadata.offset)
     print(str)
